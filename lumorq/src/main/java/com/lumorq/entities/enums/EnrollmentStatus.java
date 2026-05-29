@@ -2,11 +2,10 @@ package com.lumorq.entities.enums;
 
 public enum EnrollmentStatus {
 
-    WAITING_PAYMENT(1),
-    PAID(2),
-    SHIPPED(3),
-    DELIVERED(4),
-    CANCELED(5);
+    PENDING(1),
+    ACTIVE(2),
+    COMPLETED(3),
+    CANCELED(4);
 
     private int code;
 

@@ -28,9 +28,9 @@ public class TestConfig implements CommandLineRunner{
         Student s1 = new Student(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
         Student s2 = new Student(null, "Alex Green", "alex@gmail.com", "977777777", "123456"); 
 
-        Enrollment e1 = new Enrollment(null, Instant.parse("2019-06-20T19:53:07Z"), EnrollmentStatus.PAID,s1);
-        Enrollment e2 = new Enrollment(null, Instant.parse("2019-07-21T03:42:10Z"), EnrollmentStatus.WAITING_PAYMENT,s2);
-        Enrollment e3 = new Enrollment(null, Instant.parse("2019-07-22T15:21:22Z"), EnrollmentStatus.WAITING_PAYMENT,s1);
+        Enrollment e1 = new Enrollment(null, Instant.parse("2019-06-20T19:53:07Z"), EnrollmentStatus.ACTIVE,s1);
+        Enrollment e2 = new Enrollment(null, Instant.parse("2019-07-21T03:42:10Z"), EnrollmentStatus.PENDING,s2);
+        Enrollment e3 = new Enrollment(null, Instant.parse("2019-07-22T15:21:22Z"), EnrollmentStatus.PENDING,s1);
 
         studentRepository.saveAll(Arrays.asList(s1, s2));
         enrollmentRepository.saveAll(Arrays.asList(e1,e2, e3));
