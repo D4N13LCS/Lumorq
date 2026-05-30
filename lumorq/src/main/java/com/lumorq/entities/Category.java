@@ -3,12 +3,13 @@ package com.lumorq.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Transient;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Category {
@@ -18,7 +19,8 @@ public class Category {
     private Long id;
     private String name;
 
-    @Transient
+    @JsonIgnore
+    @ManyToMany(mappedBy="categories")
     private Set<Course> courses = new HashSet<>();
     
     public Set<Course> getCourses() {

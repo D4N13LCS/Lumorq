@@ -70,6 +70,19 @@ public class TestConfig implements CommandLineRunner{
         studentRepository.saveAll(Arrays.asList(s1, s2));
         enrollmentRepository.saveAll(Arrays.asList(e1,e2, e3));
         categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+
+        c1.getCategories().add(cat1);
+
+        c2.getCategories().add(cat2);
+
+        c3.getCategories().add(cat3);
+
+        c4.getCategories().add(cat1);
+
+        c5.getCategories().add(cat1);
+
+        c5.getCategories().add(cat3);
+
         courseRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5));
     }
     

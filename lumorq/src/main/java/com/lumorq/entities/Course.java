@@ -8,8 +8,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Transient;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 
 @Entity
@@ -22,7 +23,8 @@ public class Course implements Serializable{
     private Double price;
     private String imgUrl;
 
-    @Transient
+    @ManyToMany
+    @JoinTable(name= "course_category", joinColumns= @JoinColumn(name = "course_id"), inverseJoinColumns=@JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
     public Course(){}
