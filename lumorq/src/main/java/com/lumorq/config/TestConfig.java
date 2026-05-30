@@ -9,10 +9,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.lumorq.entities.Category;
+import com.lumorq.entities.Course;
 import com.lumorq.entities.Enrollment;
 import com.lumorq.entities.Student;
 import com.lumorq.entities.enums.EnrollmentStatus;
 import com.lumorq.repositories.CategoryRepository;
+import com.lumorq.repositories.CourseRepository;
 import com.lumorq.repositories.EnrollmentRepository;
 import com.lumorq.repositories.StudentRepository;
 
@@ -28,6 +30,9 @@ public class TestConfig implements CommandLineRunner{
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private CourseRepository courseRepository;
+
     @Override
     public void run(String... args) throws Exception {
 
@@ -35,6 +40,25 @@ public class TestConfig implements CommandLineRunner{
         Category cat2 = new Category(null, "Frontend");
         Category cat3 = new Category(null, "DevOps"); 
 
+        Course c1 = new Course(null, "Java Spring Boot",
+        "Complete REST API development with Spring Boot and JPA.",
+        90.5, "");
+
+        Course c2 = new Course(null, "React Modern UI",
+                "Build modern and responsive interfaces using React.",
+                219.0, "");
+
+        Course c3 = new Course(null, "Docker & Kubernetes",
+                "Learn containerization and orchestration for scalable applications.",
+                125.0, "");
+
+        Course c4 = new Course(null, "Node.js API Mastery",
+                "Create scalable backend applications with Node.js and Express.",
+                120.0, "");
+
+        Course c5 = new Course(null, "SQL for Developers",
+                "Master relational databases and advanced SQL queries.",
+                100.99, "");
 
         Student s1 = new Student(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
         Student s2 = new Student(null, "Alex Green", "alex@gmail.com", "977777777", "123456"); 
@@ -46,6 +70,7 @@ public class TestConfig implements CommandLineRunner{
         studentRepository.saveAll(Arrays.asList(s1, s2));
         enrollmentRepository.saveAll(Arrays.asList(e1,e2, e3));
         categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+        courseRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5));
     }
     
 }

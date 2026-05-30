@@ -1,9 +1,14 @@
 package com.lumorq.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Category {
@@ -12,6 +17,13 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @Transient
+    private Set<Course> courses = new HashSet<>();
+    
+    public Set<Course> getCourses() {
+        return courses;
+    }
 
     public Category(){}
 
