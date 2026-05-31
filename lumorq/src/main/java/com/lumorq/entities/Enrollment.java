@@ -5,6 +5,10 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.lumorq.entities.enums.EnrollmentStatus;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,9 +16,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.lumorq.entities.enums.EnrollmentStatus;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Enrollment implements Serializable{
@@ -34,6 +36,9 @@ public class Enrollment implements Serializable{
 
     @OneToMany(mappedBy="id.enrollment")
     private Set<EnrollmentItem> items = new HashSet<>();
+
+    @OneToOne(mappedBy = "enrollment", cascade = CascadeType.ALL)
+    private Payment payment;
 
     public Enrollment(){}
 
@@ -77,6 +82,14 @@ public class Enrollment implements Serializable{
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
     public Set<EnrollmentItem> getItems() {

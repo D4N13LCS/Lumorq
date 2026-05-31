@@ -12,6 +12,7 @@ import com.lumorq.entities.Category;
 import com.lumorq.entities.Course;
 import com.lumorq.entities.Enrollment;
 import com.lumorq.entities.EnrollmentItem;
+import com.lumorq.entities.Payment;
 import com.lumorq.entities.Student;
 import com.lumorq.entities.enums.EnrollmentStatus;
 import com.lumorq.repositories.CategoryRepository;
@@ -96,6 +97,10 @@ public class TestConfig implements CommandLineRunner{
         EnrollmentItem ei4 = new EnrollmentItem(e3, c5, c5.getPrice()); 
 
         EnrollmentItemRepository.saveAll(Arrays.asList(ei1, ei2, ei3, ei4));
+        Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), e1);
+
+        e1.setPayment(pay1);
+        enrollmentRepository.save(e1);
     }
     
 }
