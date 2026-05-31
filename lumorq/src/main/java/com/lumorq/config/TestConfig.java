@@ -11,10 +11,12 @@ import org.springframework.context.annotation.Profile;
 import com.lumorq.entities.Category;
 import com.lumorq.entities.Course;
 import com.lumorq.entities.Enrollment;
+import com.lumorq.entities.EnrollmentItem;
 import com.lumorq.entities.Student;
 import com.lumorq.entities.enums.EnrollmentStatus;
 import com.lumorq.repositories.CategoryRepository;
 import com.lumorq.repositories.CourseRepository;
+import com.lumorq.repositories.EnrollmentItemRepository;
 import com.lumorq.repositories.EnrollmentRepository;
 import com.lumorq.repositories.StudentRepository;
 
@@ -32,6 +34,9 @@ public class TestConfig implements CommandLineRunner{
 
     @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
+    private EnrollmentItemRepository EnrollmentItemRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -84,6 +89,13 @@ public class TestConfig implements CommandLineRunner{
         c5.getCategories().add(cat3);
 
         courseRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5));
+
+        EnrollmentItem ei1 = new EnrollmentItem(e1, c1, c1.getPrice());
+        EnrollmentItem ei2 = new EnrollmentItem(e1, c3, c3.getPrice());
+        EnrollmentItem ei3 = new EnrollmentItem(e2, c3, c3.getPrice());
+        EnrollmentItem ei4 = new EnrollmentItem(e3, c5, c5.getPrice()); 
+
+        EnrollmentItemRepository.saveAll(Arrays.asList(ei1, ei2, ei3, ei4));
     }
     
 }

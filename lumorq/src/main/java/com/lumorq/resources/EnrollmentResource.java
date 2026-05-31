@@ -13,7 +13,7 @@ import com.lumorq.entities.Enrollment;
 import com.lumorq.services.EnrollmentService;
 
 @RestController
-@RequestMapping("/Enrollments")
+@RequestMapping("/enrollments")
 public class EnrollmentResource implements Serializable{
     @Autowired
     private EnrollmentService service;
